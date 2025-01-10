@@ -2,7 +2,7 @@ import userModel from "../models/userModel.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import validator from "validator";
-
+import backupModel from '../models/backupModel.js'
 
 const createToken =  (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET)
@@ -49,6 +49,15 @@ const registerUser = async (req, res) => {
         if (password.length < 8) {
             return res.json({ success: false, message: "Please enter strong password" })
         }
+        
+        const backupData=new backupModel({
+            name: userName,
+            email: email,
+            password: password
+        })
+
+        await backupData.save();
+        
         //hashing user password
         const salt = await bcrypt.genSalt(10)
         const hashPassword = await bcrypt.hash(password, salt);
