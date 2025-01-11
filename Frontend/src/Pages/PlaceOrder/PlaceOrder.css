@@ -36,3 +36,10 @@
 .place-order-right .cart-total button{
     margin-top: 30px;
 }
+
+@media (max-width:750px){
+    .place-order{
+        flex-direction: column-reverse;
+    }
+}
+
