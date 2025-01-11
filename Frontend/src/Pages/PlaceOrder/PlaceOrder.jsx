@@ -106,6 +106,7 @@ const Placeorder = () => {
           if (verifyResponse.data.success) {
             toast.success("Payment successful and OTP send to your Email");
             updateCartData();
+            navigate("/");
           } else {
             toast.error("Payment verification failed.");
           }
