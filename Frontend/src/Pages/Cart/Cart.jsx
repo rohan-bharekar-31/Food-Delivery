@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { StoreContext } from '../../context/StoreContext'
 import './Cart.css'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const Cart = () => {
   const navigate = useNavigate()
